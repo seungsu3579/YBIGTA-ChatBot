@@ -16,7 +16,8 @@ client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect((HOST, PORT))
 
 # 메시지를 전송합니다.
-client_socket.sendall("안녕".encode())
+data = input("write message : ")
+client_socket.sendall(data.encode())
 
 # 메시지를 수신합니다.
 data = client_socket.recv(1024)

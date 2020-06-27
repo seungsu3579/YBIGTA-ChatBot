@@ -2,8 +2,6 @@ import socket
 from _thread import *
 
 
-# 쓰레드에서 실행되는 코드입니다.
-
 # 접속한 클라이언트마다 새로운 쓰레드가 생성되어 통신을 하게 됩니다.
 def threaded(client_socket, addr):
 
@@ -21,15 +19,21 @@ def threaded(client_socket, addr):
                 print("Disconnected by " + addr[0], ":", addr[1])
                 break
 
-            print("Received from " + addr[0], ":", addr[1], data.decode())
+            print(
+                "Received from " + addr[0],
+                ":",
+                addr[1],
+                data.decode(),
+                type(data),
+                type(data.decode()),
+            )
 
             #########################################################
-
             # 응답 함수 콜
 
             #########################################################
 
-            # 에콘
+            # 에코
             client_socket.send(data)
 
         except ConnectionResetError as e:
