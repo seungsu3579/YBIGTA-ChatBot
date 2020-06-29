@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 ## 필요 패키지 로드
 import torch
 import torch.nn as nn
@@ -16,6 +17,7 @@ from transformers.optimization import WarmupLinearSchedule
 import socket
 from _thread import *
 
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 ## bert 모델 불러오기, vocab 불러오기, tokenizer 불러오기..
 bertmodel, vocab = get_pytorch_kobert_model()
@@ -66,7 +68,7 @@ model = BERTseq2seq(bertmodel, vocab_size=vocab_size, dr_rate=0.5).to(device)
 
 ## 모델 불러오기
 save_path = "./model/sample_model.tar"
-checkpoint = torch.load(save_path)
+checkpoint = torch.load(save_path, map_location=torch.device('cpu'))
 model.load_state_dict(checkpoint["model_state_dict"])
 
 ## 입력된 텍스트에 대한 답변 리턴
