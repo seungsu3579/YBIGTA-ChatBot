@@ -1,6 +1,5 @@
 # YBIGTA 2020-1 Conference : 심심한 와빅이
 
-## 파일설명
+### :triangular_flag_on_post: 목표
 
-1. socket
-   서버 컴퓨터에서 Seq2Seq를 통해 메세지에 대한 응답을 Django로 보내기 위한 연습 파일
+YBIGTA에 대한 궁금증을 해결하고 무료함을 달래줄 챗봇을 만들어보자.
